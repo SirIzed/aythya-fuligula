@@ -1,6 +1,8 @@
 package com.aythia.fripouille.maps;
 
 import com.aythia.fripouille.world.objects.WorldObject;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -18,7 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created on 29/04/2014.
  */
 public class GenerateTest {
-    private ObjectNode loadNodeFromFilename(String filename) {
+    private ArrayNode loadNodeFromFilename(String filename) {
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode mapNode = null;
         try {
@@ -26,15 +28,16 @@ public class GenerateTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return mapNode;
+        assert mapNode != null;
+        return (ArrayNode) mapNode.get("map");
     }
 
     @Test
     public void fromJsonNode()  {
-        Map map = Map.fromJsonNode(loadNodeFromFilename("/raw_map.json"));
+        Map map = Map.fromArrayNode(loadNodeFromFilename("/raw_map.json"));
 
-        assertThat(map.getCell(0, 0).getVisible(), is(equalTo(new WorldObject("X"))));
-        assertThat(map.getCell(2, 4).getVisible(), is(equalTo(new WorldObject("Y"))));
+        assertThat(map.getCell(0, 0), CoreMatchers.<Cell>equalTo(new WorldObject("X")));
+        assertThat(map.getCell(2, 4), CoreMatchers.<Cell>equalTo(new WorldObject("Y")));
     }
 
     @Rule public ExpectedException thrown = ExpectedException.none();
@@ -43,21 +46,21 @@ public class GenerateTest {
     public void checkIntegrityNoLine() {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("No line found");
-        Map.fromJsonNode(loadNodeFromFilename("/raw_map_no_map.json"));
+        Map.fromArrayNode(loadNodeFromFilename("/raw_map_no_map.json"));
     }
 
     @Test
     public void checkIntegrityEmptyLine() {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("Empty line");
-        Map.fromJsonNode(loadNodeFromFilename("/raw_map_empty_line.json"));
+        Map.fromArrayNode(loadNodeFromFilename("/raw_map_empty_line.json"));
     }
 
     @Test
     public void checkIntegrityDifferentLineSize() {
         thrown.expect(RuntimeException.class);
         thrown.expectMessage("two different line size");
-        Map.fromJsonNode(loadNodeFromFilename("/raw_map_different_line_size.json"));
+        Map.fromArrayNode(loadNodeFromFilename("/raw_map_different_line_size.json"));
     }
 
 }

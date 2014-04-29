@@ -1,9 +1,11 @@
 package com.aythia.fripouille.world.objects;
 
+import com.aythia.fripouille.maps.Cell;
+
 /**
  * Created on 29/04/2014.
  */
-public class WorldObject {
+public class WorldObject implements Cell {
     public static final String EMPTY_CELL = "";
     private final String object;
 

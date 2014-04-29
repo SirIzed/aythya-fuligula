@@ -5,7 +5,6 @@ import com.aythia.fripouille.maps.Map;
 import com.aythia.fripouille.world.objects.WorldObject;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.ArrayList;
 
@@ -14,15 +13,8 @@ import java.util.ArrayList;
  */
 public class Generate {
 
-    private final String map_fieldname;
-
-    public Generate(String map_fieldname) {
-        this.map_fieldname = map_fieldname;
-    }
-
-    public Map fromJsonNode(ObjectNode jsonMap) {
-        ArrayNode mapArray = (ArrayNode) jsonMap.get(map_fieldname);
-        ArrayList<ArrayList<Cell>> cells = getArrayListsFromArrayNode(mapArray);
+    public Map fromArrayNode(ArrayNode jsonMap) {
+        ArrayList<ArrayList<Cell>> cells = getArrayListsFromArrayNode(jsonMap);
 
         return mapFromNotEmptyMap(cells);
 
@@ -45,7 +37,7 @@ public class Generate {
     private ArrayList<Cell> getLineFromString(String stringLine) {
         ArrayList<Cell> lineCell = new ArrayList<>();
         for (int index = 0 ; index < stringLine.length() ; index++) {
-            lineCell.add(new Cell(new WorldObject[]{new WorldObject(Character.toString(stringLine.charAt(index)))}));
+            lineCell.add(new WorldObject(Character.toString(stringLine.charAt(index))));
         }
 
         return lineCell;

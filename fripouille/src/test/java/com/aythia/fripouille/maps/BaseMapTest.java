@@ -4,6 +4,7 @@ package com.aythia.fripouille.maps;
  * Created on 29/04/2014.
  */
 
+import com.aythia.fripouille.world.objects.WorldObject;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -28,7 +29,7 @@ public class BaseMapTest {
     @Test
     public void setCellInMap() {
         Map smallestMap = new Map(1, 1);
-        smallestMap.setCell(0, 0, new Cell());
+        smallestMap.setCell(0, 0, new WorldObject());
         assertThat(smallestMap.getCell(0, 0), is(notNullValue()));
 
     }
