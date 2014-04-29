@@ -6,7 +6,6 @@ package com.aythia.fripouille.maps;
 
 import com.aythia.fripouille.maps.generate.Generate;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Map {
     private Cell[][] map;
@@ -18,7 +17,7 @@ public class Map {
         map = new Cell[numberLines][numberColumns];
     }
 
-    static Map fromArrayNode(ArrayNode jsonMap) {
+    public static Map fromArrayNode(ArrayNode jsonMap) {
         return new Generate().fromArrayNode(jsonMap);
     }
 

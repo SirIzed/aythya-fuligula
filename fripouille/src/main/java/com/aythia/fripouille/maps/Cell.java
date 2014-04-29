@@ -5,4 +5,5 @@ package com.aythia.fripouille.maps;
  */
 
 public interface Cell {
+    public String getType();
 }
