@@ -1,5 +1,6 @@
 package com.aythia.fripouille.world.objects;
 
+import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -12,8 +13,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class WorldObjectTest {
     @Test
     public void baseComparisons() {
-        assertThat(new WorldObject(), is(new WorldObject()));
-        assertThat(new WorldObject("X"), is(new WorldObject("X")));
-        assertThat(new WorldObject("X"), is(not(new WorldObject("Y"))));
+        Assertions.assertThat(new WorldObject()).isEqualTo(new WorldObject());
+        Assertions.assertThat(new WorldObject("X")).isEqualTo(new WorldObject("X"));
+        Assertions.assertThat(new WorldObject("X")).isNotEqualTo(new WorldObject("Y"));
+
     }
 }

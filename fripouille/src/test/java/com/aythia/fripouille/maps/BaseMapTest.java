@@ -7,31 +7,30 @@ package com.aythia.fripouille.maps;
 import com.aythia.fripouille.world.objects.WorldObject;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 
 public class BaseMapTest {
     @Test
     public void emptyMap() {
         Map emptyMap = new Map();
-        assertThat(0, is(emptyMap.numberLines()));
-        assertThat(0, is(emptyMap.numberColumns()));
+        assertThat(0).isEqualTo(emptyMap.numberLines());
+        assertThat(0).isEqualTo(emptyMap.numberColumns());
+
     }
 
     @Test
     public void noCellInMap() {
         Map noCellMap = new Map(5, 10);
-        assertThat(5, is(noCellMap.numberLines()));
-        assertThat(10, is(noCellMap.numberColumns()));
-        assertThat(noCellMap.getCell(2, 9), is(nullValue()));
+        assertThat(5).isEqualTo(noCellMap.numberLines());
+        assertThat(10).isEqualTo(noCellMap.numberColumns());
+        assertThat(noCellMap.getCell(2, 9)).isNull();
     }
     @Test
     public void setCellInMap() {
         Map smallestMap = new Map(1, 1);
         smallestMap.setCell(0, 0, new WorldObject());
-        assertThat(smallestMap.getCell(0, 0), is(notNullValue()));
-
+        assertThat(smallestMap.getCell(0, 0)).isNotNull();
     }
 
 }
