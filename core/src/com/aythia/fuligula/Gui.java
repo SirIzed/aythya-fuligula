@@ -1,5 +1,6 @@
 package com.aythia.fuligula;
 
+import com.aythia.fuligula.libgdx.ui.Window;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -7,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 
 /**
  * Created on 25/05/2014.
@@ -44,7 +44,6 @@ public class Gui {
 
         test = new Window("Another", skin);
         test.setStyle(window);
-        test.padTop(parameter.size);
         test.add("2nd window");
         test.setResizable(true);
 
