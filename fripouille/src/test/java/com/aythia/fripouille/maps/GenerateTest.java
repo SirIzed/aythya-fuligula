@@ -6,12 +6,13 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.fest.assertions.api.Assertions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.IOException;
+
+import static org.fest.assertions.api.Assertions.assertThat;
 
 
 /**
@@ -30,8 +31,8 @@ public class GenerateTest {
     public void fromJsonNode() throws IOException {
         Map map = Map.fromArrayNode(loadNodeFromFilename("/raw_map.json"));
 
-        Assertions.assertThat(map.getCell(0, 0)).isEqualTo(new WorldObject("X"));
-        Assertions.assertThat(map.getCell(2, 4)).isEqualTo(new WorldObject("Y"));
+        assertThat(map.getCell(0, 0)).isEqualTo(new WorldObject("X"));
+        assertThat(map.getCell(2, 4)).isEqualTo(new WorldObject("Y"));
     }
 
     @Rule public ExpectedException thrown = ExpectedException.none();

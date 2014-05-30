@@ -14,13 +14,15 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 
 public class AythiaFuligula extends ApplicationAdapter {
-	private Stage stage;
+	private static Stage stage;
+    private static Gui gui;
 
 	@Override
 	public void create () {
         stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
 
+        Gdx.input.setInputProcessor(stage);
+        gui = new Gui(stage);
         stage.addActor(new ViewMap(Map.fromArrayNode(loadNodeFromFilename("/smiley.json"))));
 	}
 

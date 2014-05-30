@@ -29,7 +29,7 @@ public class ViewMap extends Actor {
         for (int line = map.numberLines() - 1 ; line >= 0 ; line-- ) {
             for (int column = 0 ; column < map.numberColumns() ; column++) {
                 int x = column * cellWidth;
-                int y = (map.numberLines() - 1 - line) * cellHeight;
+                int y = (map.numberLines() - line) * cellHeight;
                 font.draw(batch, map.getCell(line, column).getType(), x, y);
             }
         }
