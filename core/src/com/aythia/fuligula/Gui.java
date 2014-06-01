@@ -1,5 +1,7 @@
 package com.aythia.fuligula;
 
+import com.aythia.fuligula.libgdx.listener.EnterListener;
+import com.aythia.fuligula.libgdx.ui.TextField;
 import com.aythia.fuligula.libgdx.ui.Window;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -34,6 +36,11 @@ public class Gui {
         test.add("a line");
         test.row();
         test.add("éèà€");
+        test.row();
+        test.add(new TextField("test", skin, stage));
+        test.row();
+        test.add(new TextField("test", skin, stage));
+
         test.setResizable(true);
         stage.addActor(test);
 
@@ -45,7 +52,14 @@ public class Gui {
         test = new Window("Another", skin);
         test.setStyle(window);
         test.add("2nd window");
+        test.row();
+        TextField textField = new TextField("test", skin, stage);
+        textField.setTextFieldListener(new EnterListener(stage));
+        test.add(textField);
+
+
         test.setResizable(true);
+        test.pack();
 
         stage.addActor(test);
 

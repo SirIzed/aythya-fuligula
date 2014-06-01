@@ -19,5 +19,10 @@ public class CloseListener extends ClickListener {
     public void clicked(InputEvent event, float x, float y) {
         actor.setVisible(false);
     }
+    @Override
+    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        event.stop();
+        return super.touchDown(event, x, y, pointer, button);
+    }
 
 }

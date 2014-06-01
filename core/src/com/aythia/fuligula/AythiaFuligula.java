@@ -1,9 +1,11 @@
 package com.aythia.fuligula;
 
 import com.aythia.fripouille.maps.Map;
+import com.aythia.fuligula.libgdx.listener.StageListener;
 import com.aythia.fuligula.world.ViewMap;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -21,7 +23,10 @@ public class AythiaFuligula extends ApplicationAdapter {
 	public void create () {
         stage = new Stage(new ScreenViewport());
 
-        Gdx.input.setInputProcessor(stage);
+        InputMultiplexer inputHandler = new InputMultiplexer();
+        inputHandler.addProcessor(new StageListener(stage));
+        inputHandler.addProcessor(stage);
+        Gdx.input.setInputProcessor(inputHandler);
         gui = new Gui(stage);
         stage.addActor(new ViewMap(Map.fromArrayNode(loadNodeFromFilename("/smiley.json"))));
 	}

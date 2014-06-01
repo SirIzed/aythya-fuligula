@@ -20,14 +20,11 @@ public class Window extends com.badlogic.gdx.scenes.scene2d.ui.Window {
         closeButton = new TextButton("X", skin);
         closeButton.addListener(new CloseListener(this));
         addActor(closeButton);
-        closeButton.bottom().right();
-        closeButton.toFront();
-
     }
 
     protected void drawBackground (Batch batch, float parentAlpha, float x, float y) {
         super.drawBackground(batch, parentAlpha, x, y);
-        closeButton.setPosition((int)x + getPadLeft(), y + getHeight() - closeButton.getHeight());
+        closeButton.setPosition(x + getPadLeft(), y + getHeight() - closeButton.getHeight());
         closeButton.draw(batch, parentAlpha);
     }
 
