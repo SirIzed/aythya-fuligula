@@ -1,0 +1,46 @@
+{
+
+    com.badlogic.gdx.graphics.Color: {
+        green: { a: 1, b: 0, g: 1, r: 0 },
+        white: { a: 1, b: 1, g: 1, r: 1 },
+        red: { a: 1, b: 0, g: 0, r: 1 },
+        black: { a: 1, b: 0, g: 0, r: 0 },
+        darkGrey : {a: 1, r: 0.20, g: 0.20, b: 0.20},
+        lightGrey : {a: 1, r: 0.4, g: 0.4, b: 0.4},
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable: {
+        background-red: { name: white-background, color: red },
+        background-black: { name: white-background, color: black },
+        background-green: { name: white-background, color: green },
+        border-background-black: {name: white-border-background, color: black},
+        scroll: {name: white-background, color: darkGrey},
+        scrollKnob: {name: white-background, color: lightGrey},
+    },
+
+    com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
+        default: { titleFont: default-font, background: default-window-background, titleFontColor: white }
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+        default: { font: default-font, fontColor: white }
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+        close: {
+            up: close-button-up,
+            down: close-button-down,
+            over: close-button-over,
+        },
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
+        default: {
+            selection: background-green, background: background-black, font: default-font, fontColor: white,
+            cursor: background-red
+        }
+    },
+    com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+        default: {
+            background: background-black,
+            vScroll: scroll, vScrollKnob: scrollKnob,
+            hScroll: scroll, hScrollKnob: scrollKnob,
+        },
+    },
+}
