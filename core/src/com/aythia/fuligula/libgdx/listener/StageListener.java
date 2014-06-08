@@ -25,6 +25,10 @@ public class StageListener extends InputAdapter {
         if ((has_focus != null) && (has_focus.hit(x, y, false) != has_focus)) {
             stage.setKeyboardFocus(null);
         }
+        has_focus = stage.getScrollFocus();
+        if ((has_focus != null) && (has_focus.hit(x, y, false) != has_focus)) {
+            stage.setScrollFocus(null);
+        }
 
     }
 }
